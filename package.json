@@ -1,0 +1,25 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "fable-splitter -c splitter.config.js -w",
+    "server": "cd public && static-server --port 8080",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "handlebars": "^4.0.10",
+    "marked": "^0.3.6",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "static-server": "^2.0.5"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "fable-splitter": "^0.1.10"
+  }
+}

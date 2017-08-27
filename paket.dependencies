@@ -1,0 +1,11 @@
+framework: netstandard2.0
+
+source https://www.nuget.org/api/v2
+
+clitool dotnet-fable prerelease
+nuget Fable.Core prerelease
+nuget Fable.Import.Browser prerelease
+nuget Fable.React prerelease
+nuget Fable.PowerPack
+nuget Fable.Elmish.Bulma
+nuget Fable.Import.Node
