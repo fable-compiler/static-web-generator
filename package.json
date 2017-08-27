@@ -6,6 +6,7 @@
   "scripts": {
     "start": "fable-splitter -c splitter.config.js -w",
     "server": "cd public && static-server --port 8080",
+    "publish": "gh-pages -d public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
-    "fable-splitter": "^0.1.10"
+    "fable-splitter": "^0.1.10",
+    "gh-pages": "^1.0.0"
   }
 }
