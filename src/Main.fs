@@ -23,9 +23,30 @@ let markdownPath = resolve "${entryDir}/../README.md"
 let dataPath = resolve "${entryDir}/../data/people.json"
 let indexPath = resolve "${entryDir}/../public/index.html"
 
+let createTable() =
+    let people = readFile dataPath |> JS.JSON.parse |> unbox<IPerson array>
+    table [ClassName "table"] [
+        thead [] [
+            tr [] [
+                th [] [str "First Name"]
+                th [] [str "Family Name"]
+                th [] [str "Birthday"]
+            ]
+        ]
+        tbody [] [
+            for person in people do
+                yield tr [] [
+                    td [] [str person.firstName]
+                    td [] [str person.familyName]
+                    td [] [str person.birthday]
+                ]
+        ]
+    ]
+
 let render() =
     [ "title" ==> "My page"
-      "body" ==> parseMarkdown markdownPath ]
+      "body" ==> parseMarkdown markdownPath
+      "data" ==> (createTable() |> parseReactStatic) ]
     |> parseTemplate templatePath
     |> writeFile indexPath
 

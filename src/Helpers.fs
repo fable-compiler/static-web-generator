@@ -52,3 +52,6 @@ let rec private ensureDirExists (dir: string) (cont: (unit->unit) option) =
 let writeFile (path: string) (content: string) =
     ensureDirExists (Path.dirname path) None
     Fs.writeFileSync(path, content)
+
+let readFile (path: string) =
+    Fs.readFileSync(path).toString()
