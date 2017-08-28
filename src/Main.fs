@@ -36,7 +36,7 @@ let createTable() =
     div [] [
         hr []
         p [] [str ("The text above has been parsed from markdown, " +
-                    "the table below is generated from a React component")]
+                    "the table below is generated from a React component.")]
         table [ClassName "table"] [
             createHead ["First Name"; "Family Name"; "Birthday"]
             tbody [] [
