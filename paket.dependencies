@@ -2,7 +2,7 @@ framework: netstandard2.0
 
 source https://www.nuget.org/api/v2
 
-clitool dotnet-fable prerelease
+clitool dotnet-fable 1.2.0-beta-003
 nuget Fable.Core prerelease
 nuget Fable.Import.Browser prerelease
 nuget Fable.React prerelease
