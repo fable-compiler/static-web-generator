@@ -9,6 +9,7 @@ open Fable.Helpers.React.Props
 open Fable.PowerPack
 open System.Text.RegularExpressions
 open Helpers
+open Fulma.Elements
 
 type IPerson =
     abstract firstName: string
@@ -37,7 +38,7 @@ let createTable() =
         hr []
         p [] [str ("The text above has been parsed from markdown, " +
                     "the table below is generated from a React component.")]
-        table [ClassName "table"] [
+        Table.table [ Table.isStripped ] [
             createHead ["First Name"; "Family Name"; "Birthday"]
             tbody [] [
                 for person in people do
