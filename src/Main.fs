@@ -24,22 +24,29 @@ let dataPath = resolve "${entryDir}/../data/people.json"
 let indexPath = resolve "${entryDir}/../public/index.html"
 
 let createTable() =
-    let people = readFile dataPath |> JS.JSON.parse |> unbox<IPerson array>
-    table [ClassName "table"] [
+    let createHead (headers: string list) =
         thead [] [
-            tr [] [
-                th [] [str "First Name"]
-                th [] [str "Family Name"]
-                th [] [str "Birthday"]
-            ]
+            tr [] [for header in headers do
+                    yield th [] [str header]]
         ]
-        tbody [] [
-            for person in people do
-                yield tr [] [
-                    td [] [str person.firstName]
-                    td [] [str person.familyName]
-                    td [] [str person.birthday]
-                ]
+    let people =
+        readFile dataPath
+        |> JS.JSON.parse
+        |> unbox<IPerson array>
+    div [] [
+        hr []
+        p [] [str ("The text above has been parsed from markdown, " +
+                    "the table below is generated from a React component")]
+        table [ClassName "table"] [
+            createHead ["First Name"; "Family Name"; "Birthday"]
+            tbody [] [
+                for person in people do
+                    yield tr [] [
+                        td [] [str person.firstName]
+                        td [] [str person.familyName]
+                        td [] [str person.birthday]
+                    ]
+            ]
         ]
     ]
 

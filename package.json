@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "fable-splitter -c splitter.config.js -w",
-    "server": "cd public && static-server --port 8080",
-    "publish": "gh-pages -d public",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "fable-splitter -c splitter.config.js",
+    "server": "cd public && reload -b",
+    "publish": "gh-pages -d public"
   },
   "keywords": [],
   "author": "",
@@ -16,8 +16,7 @@
     "handlebars": "^4.0.10",
     "marked": "^0.3.6",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "static-server": "^2.0.5"
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",

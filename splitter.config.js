@@ -5,17 +5,22 @@ function resolve(filePath) {
   return path.resolve(__dirname, filePath)
 }
 
+function runScript(scriptPath) {
+  var scriptDir = path.dirname(scriptPath);
+  // Delete files in directory from require cache
+  Object.keys(require.cache).forEach(function(key) {
+    if (key.startsWith(scriptDir))
+      delete require.cache[key]
+  })
+  require(scriptPath);
+}
+
+var outFile = resolve("build/Main.js");
+
 module.exports = {
   entry: resolve("src/Fable.StaticPageGenerator.fsproj"),
-  outDir: resolve("build"),
+  outDir: path.dirname(outFile),
   babel: { plugins: ["transform-es2015-modules-commonjs"] },
   fable: { define: ["DEBUG"] },
-  postbuild() {
-    var buildDir = resolve("build");
-    Object.keys(require.cache).forEach(function(key) {
-      if (key.startsWith(buildDir))
-        delete require.cache[key]
-    })
-    require(resolve("build/Main.js"));
-  }
+  postbuild() { runScript(outFile) }
 };
