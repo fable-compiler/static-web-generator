@@ -3,7 +3,7 @@
 Simple Fable Node.js app to generate static pages.The main advantages of this approach are:
 
 - Use the same **React API** that you use on the frontend with [Fable.Elmish](https://fable-elmish.github.io/)
-- Use **Fable helpers** for UI, like [Fable.Elmish.Bulma](https://mangelmaxime.github.io/Fable.Elmish.Bulma/)
+- Use **Fable helpers** for UI, like [Fulma](https://mangelmaxime.github.io/Fulma/)
 - Access to all **npm packages**, like [marked](https://www.npmjs.com/package/marked) or [handlebars](http://handlebarsjs.com/)
 
 This is just a quick experiment to see how a static site can be generated using Fable. If you're looking for a more opinionated tool that uses F# on .NET, check [Fornax](https://gitlab.com/Krzysztof-Cieslak/Fornax).
