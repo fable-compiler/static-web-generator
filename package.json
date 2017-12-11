@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "fable-splitter -c splitter.config.js -w",
-    "build": "fable-splitter -c splitter.config.js",
+    "build": "fable-splitter -c splitter.config.js -p",
     "server": "cd public && reload -b",
     "publish": "gh-pages -d public"
   },
