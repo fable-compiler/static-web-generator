@@ -24,6 +24,17 @@ function runScript(scriptPath) {
   }
 }
 
+var babelOptions = {
+    presets: [
+        ["@babel/preset-env", {
+            "targets": {
+                "node": "current"
+            }
+        }]
+    ],
+    plugins: ["@babel/plugin-transform-runtime"]
+};
+
 var outFile = resolve("build/Main.js");
 
 var isProduction = process.argv.indexOf("-p") >= 0;
@@ -32,7 +43,7 @@ console.log("[Environment]: " + (isProduction ? "production" : "development"));
 module.exports = {
   entry: resolve("src/Fable.StaticPageGenerator.fsproj"),
   outDir: path.dirname(outFile),
-  babel: { plugins: ["transform-es2015-modules-commonjs"] },
+  babel: babelOptions,
   fable: { define: isProduction ? [] : ["DEBUG"], },
   postbuild() { runScript(outFile) }
 };
