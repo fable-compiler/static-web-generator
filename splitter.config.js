@@ -32,7 +32,7 @@ var babelOptions = {
             }
         }]
     ],
-    plugins: ["@babel/plugin-transform-runtime"]
+    plugins: ["@babel/plugin-transform-modules-commonjs"]
 };
 
 var outFile = resolve("build/Main.js");
