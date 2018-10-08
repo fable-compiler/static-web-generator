@@ -31,7 +31,7 @@ let createTable() =
         |> unbox<IPerson array>
     div [] [
         hr []
-        p [] [str ("The text2 above has been parsed from markdown, " +
+        p [] [str ("The text above has been parsed from markdown, " +
                     "the table below is generated from a React component.")]
         Table.table [ Table.IsStriped ] [
             createHead ["First Name"; "Family Name"; "Birthday"]
