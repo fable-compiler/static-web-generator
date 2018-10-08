@@ -1,15 +1,10 @@
 module Fable.StaticPageGenerator.Main
 
-open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Import
-open Fable.Import.React
 open Fable.Helpers.React
-open Fable.Helpers.React.Props
-open Fable.PowerPack
-open System.Text.RegularExpressions
 open Helpers
-open Fulma.Elements
+open Fulma
 
 type IPerson =
     abstract firstName: string
@@ -38,7 +33,7 @@ let createTable() =
         hr []
         p [] [str ("The text above has been parsed from markdown, " +
                     "the table below is generated from a React component.")]
-        Table.table [ Table.isStripped ] [
+        Table.table [ Table.IsStriped ] [
             createHead ["First Name"; "Family Name"; "Birthday"]
             tbody [] [
                 for person in people do

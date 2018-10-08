@@ -1,6 +1,6 @@
 {
   "name": "test",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,12 +15,15 @@
   "dependencies": {
     "handlebars": "^4.0.11",
     "marked": "^0.3.9",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
   },
   "devDependencies": {
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
-    "fable-splitter": "^0.1.20",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
+    "@babel/preset-env":"^7.1.0",
+    "@babel/runtime": "^7.1.2",
+    "fable-splitter": "^2.0.0",
     "gh-pages": "^1.1.0",
     "reload": "^2.2.2"
   }
