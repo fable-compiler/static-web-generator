@@ -1,9 +1,9 @@
-module Fable.StaticPageGenerator.Main
+module Main
 
-open Fable.Core.JsInterop
 open Fable.Import
 open Fable.Helpers.React
-open Helpers
+open Fable.Helpers.React.Props
+open StaticWebGenerator
 open Fulma
 
 type IPerson =
@@ -14,10 +14,9 @@ type IPerson =
 // Make sure to always resolve paths to avoid conflicts in generated JS files
 // Check fable-splitter README for info about ${entryDir} macro
 
-let templatePath = resolve "${entryDir}/../templates/template.hbs"
-let markdownPath = resolve "${entryDir}/../README.md"
-let dataPath = resolve "${entryDir}/../data/people.json"
-let indexPath = resolve "${entryDir}/../public/index.html"
+let markdownPath = IO.resolve "${entryDir}/../README.md"
+let dataPath = IO.resolve "${entryDir}/../data/people.json"
+let indexPath = IO.resolve "${entryDir}/../deploy/index.html"
 
 let createTable() =
     let createHead (headers: string list) =
@@ -26,13 +25,14 @@ let createTable() =
                     yield th [] [str header]]
         ]
     let people =
-        readFile dataPath
+        IO.readFile dataPath
         |> JS.JSON.parse
         |> unbox<IPerson array>
     div [] [
         hr []
-        p [] [str ("The text above has been parsed from markdown, " +
-                    "the table below is generated from a React component.")]
+        p [] [str """The text above has been parsed from markdown,
+                the table below is generated from a React component."""]
+        br []
         Table.table [ Table.IsStriped ] [
             createHead ["First Name"; "Family Name"; "Birthday"]
             tbody [] [
@@ -46,11 +46,35 @@ let createTable() =
         ]
     ]
 
+let frame titleText content data =
+    let cssLink path =
+        link [ Rel "stylesheet"; Type "text/css"; Href path ]
+    html [] [
+        head [] [
+            yield title [] [str titleText]
+            yield meta [ HTMLAttr.Custom ("httpEquiv", "Content-Type")
+                         HTMLAttr.Content "text/html; charset=utf-8" ]
+            yield meta [ Name "viewport"
+                         HTMLAttr.Content "width=device-width, initial-scale=1" ]
+            yield cssLink "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            yield cssLink "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css"
+        ]
+        body [] [
+            Fulma.Container.container [] [
+                content
+                data
+            ]
+        ]
+    ]
+
 let render() =
-    [ "title" ==> "My page"
-      "body" ==> parseMarkdown markdownPath
-      "data" ==> (createTable() |> parseReactStatic) ]
-    |> parseTemplate templatePath
-    |> writeFile indexPath
+    let content =
+        IO.readFile markdownPath
+        |> parseMarkdownAsReactEl "content"
+    let data =
+        createTable()
+    frame "My page" content data
+    |> parseReactStatic
+    |> IO.writeFile indexPath
 
 render()
