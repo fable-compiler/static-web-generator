@@ -2,7 +2,6 @@ source https://nuget.org/api/v2
 storage:none
 framework:netstandard2.0,netcoreapp2.0
 
-clitool dotnet-fable
 nuget Fable.Core
 nuget Fable.PowerPack
 nuget Fable.React
