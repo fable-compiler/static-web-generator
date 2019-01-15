@@ -3,7 +3,7 @@
   "scripts": {
     "postinstall": "dotnet restore src",
     "start-server": "live-server deploy",
-    "build-fable": "cd src && dotnet fable fable-splitter -- src/App.fsproj -o build --run",
+    "build-fable": "yarn run fable-splitter src/App.fsproj -o build",
     "start-fable": "yarn build-fable --watch",
     "start": "concurrently npm:start-*",
     "build": "concurrently npm:build-*",
