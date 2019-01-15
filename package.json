@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "concurrently": "^4.0.1",
-    "fable-splitter": "^2.1.0-alpha-002",
+    "fable-compiler": "^2.1.9",
+    "fable-splitter": "^2.1.0",
     "fs-extra": "^7.0.1",
     "gh-pages": "^2.0.1",
     "highlight.js": "^9.13.1",
