@@ -738,7 +738,7 @@ fable-compiler@^2.1.9:
   resolved "https://registry.yarnpkg.com/fable-compiler/-/fable-compiler-2.1.10.tgz#b57b10975bd0e51152b5ae4bc2ccb3abe73172d3"
   integrity sha512-/tX4hyHEKxoSiP2xeNCXwRQkCYqhd5lImh7w03bFdoCxBCdgh6EQSRNvWV/astJwOEat/tUmeBTtOwYh9vPQXw==
 
-fable-splitter@^2.1.0:
+fable-splitter@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/fable-splitter/-/fable-splitter-2.1.2.tgz#ac0f4f259305e6a4e117b8243e54dee76a282fdb"
   integrity sha512-0e/LhaZi88XkfVzHZDlZ/o1PyZEGiQiIXVvB2iH6955EauQpcnti/Xwbvp0/D22GcoYTMiSpVwsFgblqfFi4EA==

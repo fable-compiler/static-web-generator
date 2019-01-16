@@ -76,5 +76,6 @@ let render() =
     frame "My page" content data
     |> parseReactStatic
     |> IO.writeFile indexPath
+    printfn "Render complete!"
 
 render()

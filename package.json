@@ -1,18 +1,17 @@
 {
   "private": true,
   "scripts": {
-    "postinstall": "dotnet restore src",
     "start-server": "live-server deploy",
-    "build-fable": "yarn run fable-splitter src/App.fsproj -o build",
-    "start-fable": "yarn build-fable --watch",
-    "start": "concurrently npm:start-*",
-    "build": "concurrently npm:build-*",
+    "build-fable": "yarn fable-splitter src --run",
+    "start-fable": "yarn fable-splitter src -w --run",
+    "start": "concurrently yarn:start-*",
+    "build": "concurrently yarn:build-*",
     "deploy": "yarn build && gh-pages -d deploy"
   },
   "dependencies": {
     "concurrently": "^4.0.1",
     "fable-compiler": "^2.1.9",
-    "fable-splitter": "^2.1.0",
+    "fable-splitter": "^2.1.2",
     "fs-extra": "^7.0.1",
     "gh-pages": "^2.0.1",
     "highlight.js": "^9.13.1",
